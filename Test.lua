@@ -1,5 +1,6 @@
 
-for i = 10,1,-1
+
+while(turtle.getItemCount() > 0)
 do
-    turtle.forward()
+    turtle.dropDown()
 end
