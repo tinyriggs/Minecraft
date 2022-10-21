@@ -15,6 +15,24 @@ local function mineDown(depth)
     end
 end
 
+local function checkForWaste()
+    for i = 1, 16, 1 do
+        if turtle.getItemDetail(i) ~= nil then
+            if turtle.getItemDetail(i).name == "minecraft:dirt"then
+                turtle.select(i)
+                turtle.drop()
+            elseif turtle.getItemDetail(i).name == "minecraft:cobblestone" then
+                turtle.select(i)
+                turtle.drop()
+            elseif turtle.getItemDetail(i).name == "minecraft:cobbled_deepslate" then
+                turtle.select(i)
+                turtle.drop()
+            end
+            
+        end
+    end
+end
+
 local function mineForward(distance)
     while distance > 0 do
         turtle.dig()
@@ -22,17 +40,10 @@ local function mineForward(distance)
         turtle.digUp()
         turtle.digDown()
         distance = distance - 1
+        checkForWaste()
     end
 end
 
-local function checkForWaste()
-    for i = 1, 16, 1 do
-        if turtle.getItemDetail(i).name == "minecraft:dirt" or "minecraft:cobblestone" do
-            turtle.select(i)
-            turtle.drop()
-        end
-    end
-end
 
 local parameters = {...}
 

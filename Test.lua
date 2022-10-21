@@ -1,20 +1,19 @@
 
 
-local function checkForWaste()
-    for i = 1, 16, 1 do
-        if turtle.getItemDetail(i) ~= nil then
-            if turtle.getItemDetail(i).name == "minecraft:dirt"then
-                turtle.select(i)
-                turtle.drop()
-            elseif turtle.getItemDetail(i).name == "minecraft:cobblestone" then
-                turtle.select(i)
-                turtle.drop()
-            end
-            
-        end
+for i = 1, 10, 1 do
+    for i = 1, 10, 1 do
+        turtle.dig()
+        turtle.forward()
     end
-end
-
-while true do
-    checkForWaste()
+    if i % 2 == 0 then
+        turtle.turnLeft()
+        turtle.dig()
+        turtle.forward()
+        turtle.turnLeft()
+    else
+        turtle.turnRight()
+        turtle.dig()
+        turtle.forward()
+        turtle.turnRight()      
+    end
 end
