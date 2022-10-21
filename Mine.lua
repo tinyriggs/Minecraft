@@ -28,8 +28,8 @@ end
 local parameters = {...}
 
 
-mineDown(parameters[1])
+mineDown(tonumber(parameters[1]))
 
-mineForward(parameters[2])
+mineForward(tonumber(parameters[2]))
 
 
