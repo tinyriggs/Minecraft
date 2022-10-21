@@ -1,40 +1,20 @@
 
 
-X = 17
-Y = 17
-
-
-
-function placeLine()
-    while Y > 0 do
-        turtle.placeDown()
-        turtle.forward()
-        Y = Y - 1
+local function checkForWaste()
+    for i = 1, 16, 1 do
+        if turtle.getItemDetail(i) ~= nil then
+            if turtle.getItemDetail(i).name == "minecraft:dirt"then
+                turtle.select(i)
+                turtle.drop()
+            elseif turtle.getItemDetail(i).name == "minecraft:cobblestone" then
+                turtle.select(i)
+                turtle.drop()
+            end
+            
+        end
     end
-    turtle.placeDown()
-    Y = 17
 end
 
-
-function turn()
-    if (X % 2 == 0)then
-        turtle.turnRight()
-    else
-        turtle.turnLeft()
-    end
-
-    turtle.forward()
-
-    if (X % 2 == 0)then
-        turtle.turnRight()
-    else
-        turtle.turnLeft()
-    end
-
-    X = X - 1
-end
-
-while X > 0 do
-    placeLine()
-    turn()
+while true do
+    checkForWaste()
 end

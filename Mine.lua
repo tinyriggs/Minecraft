@@ -25,11 +25,29 @@ local function mineForward(distance)
     end
 end
 
+local function checkForWaste()
+    for i = 1, 16, 1 do
+        if turtle.getItemDetail(i).name == "minecraft:dirt" or "minecraft:cobblestone" do
+            turtle.select(i)
+            turtle.drop()
+        end
+    end
+end
+
 local parameters = {...}
 
+local depthToMine = tonumber(parameters[1])
+local distanceToMine = tonumber(parameters[2])
 
-mineDown(tonumber(parameters[1]))
-
-mineForward(tonumber(parameters[2]))
+mineDown(depthToMine)
+mineForward(distanceToMine)
+turtle.turnLeft()
+turtle.dig()
+turtle.forward()
+turtle.turnLeft()
+mineForward(distanceToMine)
+for i = 1, depthToMine, 1 do
+    turtle.up()
+end
 
 
