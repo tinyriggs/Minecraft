@@ -1,5 +1,5 @@
 
-function mineDown(depth)
+local function mineDown(depth)
     while depth > 0 do
         turtle.digDown()
         turtle.down()
@@ -15,18 +15,21 @@ function mineDown(depth)
     end
 end
 
-function mineForward(distance)
+local function mineForward(distance)
     while distance > 0 do
         turtle.dig()
         turtle.forward()
         turtle.digUp()
         turtle.digDown()
+        distance = distance - 1
     end
 end
 
+local parameters = {...}
 
-mineDown(5)
 
-mineForward(25)
+mineDown(parameters[1])
+
+mineForward(parameters[2])
 
 
