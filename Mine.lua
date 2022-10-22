@@ -33,6 +33,8 @@ local function checkForWaste()
     end
 end
 
+
+
 local function mineForward(distance)
     while distance > 0 do
         turtle.dig()
