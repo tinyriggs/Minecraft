@@ -33,7 +33,23 @@ local function checkForWaste()
     end
 end
 
-
+local function waste()
+    for i = 1, 16, 1 do
+        if turtle.getItemDetail(i) ~= nil then
+            if  turtle.getItemDetail(i).name == "minecraft:raw_iron" then
+                break
+            elseif turtle.getItemDetail(i).name == "minecraft:diamond" then
+                break
+            elseif turtle.getItemDetail(i).name == "minecraft:coal" then
+                break
+            else
+                turtle.select(i)
+                turtle.drop()
+            end
+        end
+    end
+    
+end
 
 local function mineForward(distance)
     while distance > 0 do
@@ -42,7 +58,7 @@ local function mineForward(distance)
         turtle.digUp()
         turtle.digDown()
         distance = distance - 1
-        checkForWaste()
+        waste()
     end
 end
 
