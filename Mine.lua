@@ -34,6 +34,7 @@ local function checkForWaste()
 end
 
 local function waste()
+    turtle.select(1)
     for i = 1, 16, 1 do
         if turtle.getItemDetail(i) ~= nil then
             if  turtle.getItemDetail(i).name == "minecraft:raw_iron" then
