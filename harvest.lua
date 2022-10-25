@@ -1,8 +1,9 @@
 
 local function plant()
+    turtle.select(1)
     for i = 1, 16, 1 do
         if turtle.getItemDetail() ~= nil then
-            if  turtle.getItemDetail().name == "minecraft:wheat_seeds" then
+            if  turtle.getItemDetail(i).name == "minecraft:wheat_seeds" then
                 turtle.select(i)
                 break
             end 
